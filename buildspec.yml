@@ -15,4 +15,4 @@ phases:
   post_build:
     commands:
       - aws s3 sync ./dist $S3_BUCKET --cache-control max-age=86400,must-revalidate
-      - aws cloudfront create-invalidation --distribution-id E5HU86PZ0ONQ4 --paths "/*" 
+      # - aws cloudfront create-invalidation --distribution-id E5HU86PZ0ONQ4 --paths "/*" 
