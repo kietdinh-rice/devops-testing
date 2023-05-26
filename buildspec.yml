@@ -1,6 +1,9 @@
 version: 0.2
 
 phases:
+  env:
+    parameter-store:
+      TEMP_BUCKET: "S3_BUCKET"
   install:
     commands:
       - npm i npm@latest -g
@@ -14,5 +17,5 @@ phases:
       - npm run build
   post_build:
     commands:
-      - aws s3 sync ./dist $S3_BUCKET --cache-control max-age=86400,must-revalidate
+      - aws s3 sync ./dist $TEMP_BUCKET --cache-control max-age=86400,must-revalidate
       - aws cloudfront create-invalidation --distribution-id E5HU86PZ0ONQ4 --paths "/*" 
