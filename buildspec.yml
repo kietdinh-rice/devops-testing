@@ -1,9 +1,10 @@
 version: 0.2
 
+env:
+  parameter-store:
+    TEMP_BUCKET: "S3_BUCKET"
+    
 phases:
-  env:
-    parameter-store:
-      TEMP_BUCKET: "S3_BUCKET"
   install:
     commands:
       - npm i npm@latest -g
